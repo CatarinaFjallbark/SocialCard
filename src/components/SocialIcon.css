@@ -1,0 +1,19 @@
+.displayHor {
+    display: flex;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .imageButtonStyle{
+      height: 18px;
+      align-self: flex-end;
+  }
+
+  .numberIcon{
+      align-self: flex-end;
+      font-size: 1em;
+      margin-right: 1em;
+      margin-bottom: 1px;
+      margin-left: 1px;
+
+  }

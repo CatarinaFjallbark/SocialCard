@@ -1,0 +1,9 @@
+.iconStyle{
+    display: flex;
+}
+
+.imageStylec {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    height: 45px;
+}
