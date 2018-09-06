@@ -1,26 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import {
+    increment,
+    incrementAsync
+} from '../reducers/counter'
 import share from "../resourses/share.png";
 import mail from "../resourses/mail.png";
 import thumb from "../resourses/thumb.png";
 import comment from "../resourses/comment.png";
 import "./SocialIcon.css";
 
+const SocialIcon = props => (
+    <div className="displayHor">
+        <img className="imageButtonStyle" src={comment} alt="comment" onClick={() => props.handleUp({ comments: props.comments + 1 })} />
+        <span className="numberIcon">{props.comments}</span>
+        <img className="imageButtonStyle" src={share} alt="share" onClick={() => props.handleUp({ shares: props.shares + 1 })} />
+        <span className="numberIcon">{props.shares}</span>
+        <img className="imageButtonStyle" src={thumb} alt="thumb" onClick={props.increment} />
+        <span className="numberIcon">{props.count}</span>
+        <img className="imageButtonStyle" src={mail} alt="mail" />
+    </div>
+)
 
-class SocialIcon extends Component {
+const mapStateToProps = ({ counter }) => ({
+    count: counter.count,
+    isIncrementing: counter.isIncrementing,
+})
 
-    render() {
-        return (
-            <div className="displayHor">
-              <img className="imageButtonStyle" src={comment} alt="comment" onClick={() => this.props.handleUp({comments: this.props.comments+1})}/>
-               <span className="numberIcon">{this.props.comments}</span>
-               <img className="imageButtonStyle" src={share} alt="share" onClick={() => this.props.handleUp({shares: this.props.shares+1})} />
-               <span className="numberIcon">{this.props.shares}</span>
-               <img className="imageButtonStyle" src={thumb} alt="thumb" onClick={() => this.props.handleUp({likes: this.props.likes+1})}/>
-               <span className="numberIcon">{this.props.likes}</span>
-               <img className="imageButtonStyle" src={mail} alt="mail" />
-            </div>
-        );
-    }
-}
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(
+        {
+            increment,
+        },
+        dispatch
+    )
 
-export default SocialIcon;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SocialIcon)

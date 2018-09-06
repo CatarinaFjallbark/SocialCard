@@ -1,5 +1,5 @@
-export const INCREMENT_REQUESTED = 'likes/INCREMENT_REQUESTED'
-export const INCREMENT = 'likes/INCREMENT'
+export const INCREMENT_REQUESTED = 'INCREMENT_REQUESTED'
+export const INCREMENT = 'INCREMENT'
 
 const initialState = {
     count: 0,

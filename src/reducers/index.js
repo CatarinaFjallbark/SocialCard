@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import likes from './likes'
+import counter from './counter'
 
 
 export default combineReducers({
-    likes
+    counter
 })

@@ -15,7 +15,6 @@ class SCFooter extends Component {
                         handleUp = {this.props.handleUp}
                         comments={this.props.comments}
                         shares={this.props.shares}
-                        likes={this.props.likes}
                         />
                     </div>
                 </div>

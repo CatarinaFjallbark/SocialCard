@@ -12,7 +12,6 @@ class App extends Component {
       open: true,
       comments: 0,
       shares: 0,
-      likes: 0,
     }
   }
 
@@ -26,7 +25,6 @@ class App extends Component {
           handleClick={() => this.setState({ open: !this.state.open })}
           comments={this.state.comments}
           shares={this.state.shares}
-          likes={this.state.likes}
           handleUp={(newState) => this.setState(newState)}
         />
       </div>
