@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./SCHeader.css";
-import arrow from "./arrow.png";
+import arrow from "../resourses/arrow.png";
 
 let accountTw = "ThePracticalDev";
 

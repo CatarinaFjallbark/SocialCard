@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import share from "./share.png";
-import mail from "./mail.png";
-import thumb from "./thumb.png";
-import comment from "./comment.png";
+import share from "../resourses/share.png";
+import mail from "../resourses/mail.png";
+import thumb from "../resourses/thumb.png";
+import comment from "../resourses/comment.png";
 import "./SocialIcon.css";
 
 
