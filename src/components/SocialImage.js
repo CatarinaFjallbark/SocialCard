@@ -1,13 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 
-const ImageStyle = styled.div`
-    max-width: 40%;
-    margin: auto;
-    height: 250px;
-    display: grid;
-    grid-template-columns: 60px 1fr;
-`
 const ImageStyleMinor = styled.div`
     max-width: 40%;
     margin: auto;
@@ -45,26 +38,32 @@ const AncoreStyle = styled.a`
     color: gray;
 `
 
-const SocialImage = () => (
-    <div>
-        <ImageStyle>
-            <div></div>
-            <GridItemTwo>
-                <ImgSquareStyle src="https://pbs.twimg.com/profile_images/1002604104194056192/IEoNsLNM_400x400.jpg" alt="profile"></ImgSquareStyle>
-                <TextStyle>Learning React? Start Small.</TextStyle>
-            </GridItemTwo>
-        </ImageStyle>
-        <ImageStyleMinor>
-            <div></div>
-            <GridItemTwoB>
-                <div>
-                    <BoldDiv>Learning React? Start Small.</BoldDiv>
-                    <div>Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.</div>
-                    <AncoreStyle href="https://daveceddia.com/react-practice-projects">projects.io</AncoreStyle>
+class SocialImage extends React.Component {
+    render() {
+    const classNameMobileSize = this.props.isMobile ? 'SCGridMobile' : 'SCWidth SCGrid';
+    const classNameMobileSizeText = this.props.isMobile ? '' : 'SCWidth SCGridText';
+        return (
+            <div>
+                <div className={classNameMobileSize}>
+                    <div></div>
+                    <GridItemTwo>
+                        <ImgSquareStyle src="https://pbs.twimg.com/profile_images/1002604104194056192/IEoNsLNM_400x400.jpg" alt="profile"></ImgSquareStyle>
+                        <TextStyle>Learning React? Start Small.</TextStyle>
+                    </GridItemTwo>
                 </div>
-            </GridItemTwoB>
-        </ImageStyleMinor>
-    </div>
-);
+                <div className={classNameMobileSizeText}>
+                    <div></div>
+                    <GridItemTwoB>
+                        <div>
+                            <BoldDiv>Learning React? Start Small.</BoldDiv>
+                            <div>Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.</div>
+                            <AncoreStyle href="https://daveceddia.com/react-practice-projects">projects.io</AncoreStyle>
+                        </div>
+                    </GridItemTwoB>
+                </div>
+            </div>
+        );
+    }
+}
 
 export default SocialImage;

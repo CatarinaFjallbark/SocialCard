@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import SocialIcon from './SocialIcon'
+import './style.css';
 
 const SCFooterStyle = styled.div`
     max-width: 40%;
@@ -11,18 +12,22 @@ const HrStyle = styled.hr`
     color: gray;
 `
 
-const SCFooter = ({ handleUp }) => (
-    <SCFooterStyle>
-        <div>
-            <div></div>
-            <div>
-                <SocialIcon
-                    handleUp={handleUp}
-                />
+class SCFooter extends React.Component {
+    render() {
+        const classNameMobileIcons = this.props.isMobile ? '' : 'SCWidth';
+        return (
+            <div className={classNameMobileIcons}>
+                <div>
+                    <div></div>
+                    <div>
+                        <SocialIcon
+                            handleUp={this.props.handleUp}
+                        />
+                    </div>
+                </div>
+                <HrStyle />
             </div>
-        </div>
-        <HrStyle />
-    </SCFooterStyle>
-);
-
+        );
+    }
+}
 export default SCFooter;

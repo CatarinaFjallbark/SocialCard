@@ -1,13 +1,10 @@
 import React from 'react';
-import styled from "styled-components";
-import arrow from "../resourses/arrow.png";
+import styled from 'styled-components';
+import arrow from '../resourses/arrow.png';
+import './style.css';
 
 let accountTw = "ThePracticalDev";
 
-const SCHeaderStyle = styled.div`
-    max-width: 40%;
-    margin: auto;
-`
 const SCHeaderImgStyle = styled.img`
     height: 3em;
     width: 3em;
@@ -38,23 +35,31 @@ const FolderStyle = styled.span`
     cursor: pointer; 
     margin-left: auto;
 `
-
-const SCHeader = ({ header, account, handleClick }) => (
-    <SCHeaderStyle>
-        <HrStyle />
-        <MarginStyle>
-            <SCHeaderImgStyle src="https://pbs.twimg.com/profile_images/1002604104194056192/IEoNsLNM_400x400.jpg" alt="profile"></SCHeaderImgStyle>
-            <div className="container">
-                <div className="displayHor">
-                    <BoldSpan>{`${header} \u00A0`}</BoldSpan>
-                    <LightSpan>{account} Sep 4 2018</LightSpan>
-                </div>
-                <div>Learning React? Start Small.</div>
-                <div>{`{ cred:`} <AncoreStyle href={`https://www.twitter.com/${accountTw}`}>{accountTw}</AncoreStyle>{` }`}</div>
+class SCHeader extends React.Component {
+    render() {
+        const classNameMobileText = this.props.isMobile ? 'mobileTextHeader' : '';
+        const classNameMobileSize = this.props.isMobile ? '' : 'SCWidth';
+        return (
+            <div className={classNameMobileSize}>
+                <HrStyle />
+                <MarginStyle>
+                    <SCHeaderImgStyle src="https://pbs.twimg.com/profile_images/1002604104194056192/IEoNsLNM_400x400.jpg" alt="profile"></SCHeaderImgStyle>
+                    <div>
+                        <div>
+                            <BoldSpan>{`${this.props.header} \u00A0`}</BoldSpan>
+                            <LightSpan>{this.props.account} Sep 4 2018</LightSpan>
+                        </div>
+                        <div className={classNameMobileText}>
+                            <div>Learning React? Start Small.</div>
+                            <div>{`{ cred:`} <AncoreStyle href={`https://www.twitter.com/${accountTw}`}>{accountTw}</AncoreStyle>{` }`}</div>
+                        </div>
+                    </div>
+                    <FolderStyle onClick={this.props.handleClick}><img src={arrow} alt="arrow" /></FolderStyle>
+                </MarginStyle>
             </div>
-            <FolderStyle onClick={handleClick}><img src={arrow} alt="arrow" /></FolderStyle>
-        </MarginStyle>
-    </SCHeaderStyle>
-);
+
+        )
+    }
+};
 
 export default SCHeader;

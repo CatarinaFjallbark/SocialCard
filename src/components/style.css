@@ -1,0 +1,21 @@
+.mobileTextHeader{
+    max-width: 40%;
+    display:none;
+}
+.SCGrid{
+    height: 250px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+}
+.SCGridText{
+    display: grid;
+    grid-template-columns: 60px 1fr;
+}
+.SCGridMobile{
+    background:pink;
+}
+
+.SCWidth{
+    margin: auto;   
+    max-width: 40%;
+}
