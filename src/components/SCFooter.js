@@ -1,20 +1,28 @@
 import React from 'react';
-import './SCFooter.css';
+import styled from "styled-components";
 import SocialIcon from './SocialIcon'
 
+const SCFooterStyle = styled.div`
+    max-width: 40%;
+    margin: auto;
+`
+const HrStyle = styled.hr`
+    font-weight: lighter;
+    color: gray;
+`
 
 const SCFooter = ({ handleUp }) => (
-    <div className="content">
-        <div className="imageStylec">
+    <SCFooterStyle>
+        <div>
             <div></div>
-            <div className="iconStyle">
+            <div>
                 <SocialIcon
                     handleUp={handleUp}
                 />
             </div>
         </div>
-        <hr className="lightSuperStyle" />
-    </div>
+        <HrStyle />
+    </SCFooterStyle>
 );
 
 export default SCFooter;

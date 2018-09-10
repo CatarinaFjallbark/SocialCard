@@ -1,11 +1,10 @@
 import React from 'react';
+import styled from "styled-components";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
     increment,
-    incrementAsync,
     incrementSHARES,
-    incrementAsyncSHARES,
     incrementCOMMENTS,
     incrementAsyncCOMMENTS,
 } from '../reducers/counter'
@@ -13,18 +12,31 @@ import share from "../resourses/share.png";
 import mail from "../resourses/mail.png";
 import thumb from "../resourses/thumb.png";
 import comment from "../resourses/comment.png";
-import "./SocialIcon.css";
 
-const SocialIcon = ({incrementAsyncCOMMENTS, comments, incrementSHARES, shares, increment, count}) => (
-    <div className="displayHor">
-        <img className="imageButtonStyle" src={comment} alt="comment" onClick={incrementAsyncCOMMENTS} />
-        <span className="numberIcon">{comments}</span>
-        <img className="imageButtonStyle" src={share} alt="share" onClick={incrementSHARES} />
-        <span className="numberIcon">{shares}</span>
-        <img className="imageButtonStyle" src={thumb} alt="thumb" onClick={increment} />
-        <span className="numberIcon">{count}</span>
-        <img className="imageButtonStyle" src={mail} alt="mail" />
-    </div>
+const IconStyleRow = styled.div`
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    padding: 10px;
+`
+const IconStyle = styled.span`
+    font-size: 1.1em;
+    padding-left: 5px;
+    padding-right: 25px;
+`
+
+const SocialIcon = ({ incrementAsyncCOMMENTS, comments, incrementSHARES, shares, increment, count }) => (
+    <IconStyleRow>
+        <div></div>
+        <div>
+            <img className="imageButtonStyle" src={comment} alt="comment" onClick={incrementAsyncCOMMENTS} />
+            <IconStyle>{comments}</IconStyle>
+            <img className="imageButtonStyle" src={share} alt="share" onClick={incrementSHARES} />
+            <IconStyle>{shares}</IconStyle>
+            <img className="imageButtonStyle" src={thumb} alt="thumb" onClick={increment} />
+            <IconStyle>{count}</IconStyle>
+            <img className="imageButtonStyle" src={mail} alt="mail" />
+        </div>
+    </IconStyleRow>
 )
 
 const mapStateToProps = ({ counter }) => ({
@@ -39,7 +51,7 @@ const mapStateToProps = ({ counter }) => ({
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
-        {   
+        {
             increment,
             incrementSHARES,
             incrementCOMMENTS,
