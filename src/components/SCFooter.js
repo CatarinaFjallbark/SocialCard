@@ -13,8 +13,6 @@ class SCFooter extends Component {
                     <div className="iconStyle">
                         <SocialIcon 
                         handleUp = {this.props.handleUp}
-                        comments={this.props.comments}
-                        shares={this.props.shares}
                         />
                     </div>
                 </div>

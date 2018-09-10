@@ -17,8 +17,6 @@ class SocialCard extends Component {
         {this.props.open && <SocialImage />}
         <SCFooter 
         handleUp = {this.props.handleUp}
-        comments={this.props.comments}
-        shares={this.props.shares}
         />
       </div>
     );

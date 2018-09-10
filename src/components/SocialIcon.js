@@ -3,7 +3,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
     increment,
-    incrementAsync
+    incrementAsync,
+    incrementSHARES,
+    incrementAsyncSHARES,
+    incrementCOMMENTS,
+    incrementAsyncCOMMENTS,
 } from '../reducers/counter'
 import share from "../resourses/share.png";
 import mail from "../resourses/mail.png";
@@ -13,9 +17,9 @@ import "./SocialIcon.css";
 
 const SocialIcon = props => (
     <div className="displayHor">
-        <img className="imageButtonStyle" src={comment} alt="comment" onClick={() => props.handleUp({ comments: props.comments + 1 })} />
+        <img className="imageButtonStyle" src={comment} alt="comment" onClick={props.incrementAsyncCOMMENTS} />
         <span className="numberIcon">{props.comments}</span>
-        <img className="imageButtonStyle" src={share} alt="share" onClick={() => props.handleUp({ shares: props.shares + 1 })} />
+        <img className="imageButtonStyle" src={share} alt="share" onClick={props.incrementSHARES} />
         <span className="numberIcon">{props.shares}</span>
         <img className="imageButtonStyle" src={thumb} alt="thumb" onClick={props.increment} />
         <span className="numberIcon">{props.count}</span>
@@ -25,13 +29,21 @@ const SocialIcon = props => (
 
 const mapStateToProps = ({ counter }) => ({
     count: counter.count,
+    shares: counter.shares,
+    comments: counter.comments,
     isIncrementing: counter.isIncrementing,
+    isIncrementingSHARES: counter.isIncrementingSHARES,
+    isIncrementingCOMMENTS: counter.isIncrementingCOMMENTS,
+
 })
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             increment,
+            incrementSHARES,
+            incrementCOMMENTS,
+            incrementAsyncCOMMENTS,
         },
         dispatch
     )

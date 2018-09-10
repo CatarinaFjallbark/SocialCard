@@ -10,8 +10,6 @@ class App extends Component {
       header: "The Practical Dev",
       account: "@cattazzz",
       open: true,
-      comments: 0,
-      shares: 0,
     }
   }
 
@@ -23,8 +21,6 @@ class App extends Component {
           account={this.state.account}
           open={this.state.open}
           handleClick={() => this.setState({ open: !this.state.open })}
-          comments={this.state.comments}
-          shares={this.state.shares}
           handleUp={(newState) => this.setState(newState)}
         />
       </div>
