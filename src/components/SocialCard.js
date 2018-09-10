@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SCHeader from './SCHeader'
 import SocialImage from './SocialImage'
 import SCFooter from './SCFooter'
 
-
-
-class SocialCard extends Component {
-  render() {
-    return (
-      <div>
-        <SCHeader 
-         header = {this.props.header} 
-         account = {this.props.account}
-         handleClick = {this.props.handleClick}
-        />
-        {this.props.open && <SocialImage />}
-        <SCFooter 
-        handleUp = {this.props.handleUp}
-        />
-      </div>
-    );
-  }
-}
+const SocialCard = ({header, account, handleClick, open, handleUp}) => (
+  <div>
+    <SCHeader
+      header={header}
+      account={account}
+      handleClick={handleClick}
+    />
+    {open && <SocialImage />}
+    <SCFooter
+      handleUp={handleUp}
+    />
+  </div>
+);
 
 export default SocialCard;
