@@ -1,20 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
 
-const ImageStyleMinor = styled.div`
-    max-width: 40%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 60px 1fr;
-`
-
 const GridItemTwo = styled.div`
     background: pink;
     color: white;
     display:grid;
     grid-template-columns: 60px 1fr;
     padding: 5px;
-
 `
 const GridItemTwoB = styled.div`
     border:1px solid #d3d3d3;
@@ -37,33 +29,40 @@ const AncoreStyle = styled.a`
     font-weight: lighter;
     color: gray;
 `
-
-class SocialImage extends React.Component {
-    render() {
-    const classNameMobileSize = this.props.isMobile ? 'SCGridMobile' : 'SCWidth SCGrid';
-    const classNameMobileSizeText = this.props.isMobile ? '' : 'SCWidth SCGridText';
-        return (
-            <div>
-                <div className={classNameMobileSize}>
-                    <div></div>
-                    <GridItemTwo>
-                        <ImgSquareStyle src="https://pbs.twimg.com/profile_images/1002604104194056192/IEoNsLNM_400x400.jpg" alt="profile"></ImgSquareStyle>
-                        <TextStyle>Learning React? Start Small.</TextStyle>
-                    </GridItemTwo>
+const MobileStyle = styled.div`
+    background: ${props => props.isMobile && "pink"};
+    margin: ${props => !props.isMobile && "auto"};   
+    max-width: ${props => !props.isMobile && "40%"};
+    height: ${props => !props.isMobile && "250px"};
+    display: ${props => !props.isMobile && "grid"};;
+    grid-template-columns: ${props => !props.isMobile && "60px 1fr"};
+`
+const MobileStyleText = styled.div`
+    margin: ${props => !props.isMobile && "auto;"};   
+    max-width: ${props => !props.isMobile && "40%;"};
+    display: ${props => !props.isMobile && "grid;"};
+    grid-template-columns: ${props => !props.isMobile && "60px 1fr;"};
+`
+const SocialImage = ({isMobile}) => (
+    <div>
+        <MobileStyle isMobile={isMobile}>
+            <div></div>
+            <GridItemTwo>
+                <ImgSquareStyle src="https://pbs.twimg.com/profile_images/1002604104194056192/IEoNsLNM_400x400.jpg" alt="profile"></ImgSquareStyle>
+                <TextStyle>Learning React? Start Small.</TextStyle>
+            </GridItemTwo>
+        </MobileStyle>
+        <MobileStyleText isMobile={isMobile}>
+            <div></div>
+            <GridItemTwoB>
+                <div>
+                    <BoldDiv>Learning React? Start Small.</BoldDiv>
+                    <div>Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.</div>
+                    <AncoreStyle href="https://daveceddia.com/react-practice-projects">projects.io</AncoreStyle>
                 </div>
-                <div className={classNameMobileSizeText}>
-                    <div></div>
-                    <GridItemTwoB>
-                        <div>
-                            <BoldDiv>Learning React? Start Small.</BoldDiv>
-                            <div>Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.</div>
-                            <AncoreStyle href="https://daveceddia.com/react-practice-projects">projects.io</AncoreStyle>
-                        </div>
-                    </GridItemTwoB>
-                </div>
-            </div>
-        );
-    }
-}
+            </GridItemTwoB>
+        </MobileStyleText>
+    </div>
+);
 
 export default SocialImage;

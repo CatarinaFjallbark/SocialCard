@@ -13,7 +13,7 @@ const HeaderStyle = styled.div`
 `
 
 const MainHeader = () => (
-    <HeaderStyle>Cwitter</HeaderStyle>
+    <HeaderStyle>Cwitter!</HeaderStyle>
 );
 
 export default MainHeader;

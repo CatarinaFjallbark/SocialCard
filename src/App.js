@@ -3,7 +3,7 @@ import SocialCard from './components/SocialCard'
 import MainHeader from './components/MainHeader';
 
 class App extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -15,22 +15,33 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.setState({
+      isMobile: window.innerWidth < 1025
+    });
     window.addEventListener('resize', () => {
-        this.setState({
-            isMobile: window.innerWidth < 1025
-        });
+      this.setState({
+        isMobile: window.innerWidth < 1025
+      });
     }, false);
-}
+  }
 
   render() {
     return (
       <div>
-        <MainHeader />      
+        <MainHeader />
         <SocialCard
           header={this.state.header}
           account={this.state.account}
           open={this.state.open}
-          handleClick={() => this.setState({open: !this.state.open })}
+          handleClick={() => this.setState({ open: !this.state.open })}
+          handleUp={(newState) => this.setState(newState)}
+          isMobile={this.state.isMobile}
+        />
+        <SocialCard
+          header={this.state.header}
+          account={this.state.account}
+          open={this.state.open}
+          handleClick={() => this.setState({ open: !this.state.open })}
           handleUp={(newState) => this.setState(newState)}
           isMobile={this.state.isMobile}
         />
