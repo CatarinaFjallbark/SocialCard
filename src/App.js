@@ -30,6 +30,7 @@ class App extends Component {
       <div>
         <MainHeader />
         <SocialCard
+          id={0}
           header={this.state.header}
           account={this.state.account}
           open={this.state.open}
@@ -38,7 +39,8 @@ class App extends Component {
           isMobile={this.state.isMobile}
         />
         <SocialCard
-          header={this.state.header}
+          id={1}
+          header={"Second header"}
           account={this.state.account}
           open={this.state.open}
           handleClick={() => this.setState({ open: !this.state.open })}

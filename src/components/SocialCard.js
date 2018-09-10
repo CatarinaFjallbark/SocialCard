@@ -3,7 +3,7 @@ import SCHeader from './SCHeader'
 import SocialImage from './SocialImage'
 import SCFooter from './SCFooter'
 
-const SocialCard = ({header, account, handleClick, isMobile, open, handleUp}) => (
+const SocialCard = ({header, account, handleClick, isMobile, open, handleUp, id}) => (
   <div>
     <SCHeader
       header={header}
@@ -15,6 +15,7 @@ const SocialCard = ({header, account, handleClick, isMobile, open, handleUp}) =>
     <SCFooter
       handleUp={handleUp}
       isMobile={isMobile}
+      id={id}
     />
   </div>
 );

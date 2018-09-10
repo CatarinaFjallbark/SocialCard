@@ -5,28 +5,38 @@ export const INCREMENTSHARES = 'INCREMENTSHARES'
 export const INCREMENT_REQUESTEDCOMMENTS = 'INCREMENT_REQUESTEDCOMMENTS'
 export const INCREMENTCOMMENTS = 'INCREMENTCOMMENTS'
 
-const initialState = {
-  count: 0,
-  shares: 0,
-  comments: 0,
-  isIncrementing: false,
-  isIncrementingSHARES: false,
-  isIncrementingCOMMENTS: false,
-}
+let cwitter = {
+  list_of_cweets: [{
+    id: 0,
+    count: 0,
+    shares: 0,
+    comments: 0,
+    isIncrementing: false,
+    isIncrementingSHARES: false,
+    isIncrementingCOMMENTS: false,
+  }, {
+    id: 1,
+    count: 0,
+    shares: 0,
+    comments: 0,
+    isIncrementing: false,
+    isIncrementingSHARES: false,
+    isIncrementingCOMMENTS: false,
+  }]
+};
+
+const initialState = cwitter;
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT_REQUESTED:
       return {
-        ...state,
-        isIncrementing: true
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementing: true } : { ...cweet })
       }
 
     case INCREMENT:
       return {
-        ...state,
-        count: state.count + 1,
-        isIncrementing: !state.isIncrementing
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementing: false, count: cweet.count + 1 } : { ...cweet })
       }
 
     case INCREMENT_REQUESTEDSHARES:
@@ -59,79 +69,91 @@ export default (state = initialState, action) => {
   }
 }
 
-export const increment = () => {
+export const increment = (id) => {
   return dispatch => {
     dispatch({
-      type: INCREMENT_REQUESTED
+      type: INCREMENT_REQUESTED,
+      id: id
     })
 
     dispatch({
-      type: INCREMENT
+      type: INCREMENT,
+      id: id
     })
   }
 }
 
-export const incrementAsync = () => {
+export const incrementAsync = (id) => {
   return dispatch => {
     dispatch({
-      type: INCREMENT_REQUESTED
+      type: INCREMENT_REQUESTED,
+      id: id
     })
 
     return setTimeout(() => {
       dispatch({
-        type: INCREMENT
+        type: INCREMENT,
+        id: id
       })
     }, 500)
   }
 }
 
-export const incrementSHARES = () => {
+export const incrementSHARES = (id) => {
   return dispatch => {
     dispatch({
-      type: INCREMENT_REQUESTEDSHARES
+      type: INCREMENT_REQUESTEDSHARES,
+      id: id
     })
 
     dispatch({
-      type: INCREMENTSHARES
+      type: INCREMENTSHARES,
+      id: id
     })
   }
 }
 
-export const incrementAsyncSHARES = () => {
+export const incrementAsyncSHARES = (id) => {
   return dispatch => {
     dispatch({
-      type: INCREMENT_REQUESTEDSHARES
+      type: INCREMENT_REQUESTEDSHARES,
+      id: id
     })
 
     return setTimeout(() => {
       dispatch({
-        type: INCREMENTSHARES
+        type: INCREMENTSHARES,
+        id: id
       })
     }, 500)
   }
 }
 
-export const incrementCOMMENTS = () => {
+export const incrementCOMMENTS = (id) => {
   return dispatch => {
     dispatch({
-      type: INCREMENT_REQUESTEDCOMMENTS
+      type: INCREMENT_REQUESTEDCOMMENTS,
+      id: id
     })
 
     dispatch({
-      type: INCREMENTCOMMENTS
+      type: INCREMENTCOMMENTS,
+      id: id
     })
   }
 }
 
-export const incrementAsyncCOMMENTS = () => {
+export const incrementAsyncCOMMENTS = (id) => {
   return dispatch => {
     dispatch({
-      type: INCREMENT_REQUESTEDCOMMENTS
+      type: INCREMENT_REQUESTEDCOMMENTS,
+      id: id
     })
 
     return setTimeout(() => {
       dispatch({
-        type: INCREMENTCOMMENTS
+        type: INCREMENTCOMMENTS,
+        id: id
       })
     }, 500)
   }

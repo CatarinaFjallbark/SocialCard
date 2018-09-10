@@ -38,10 +38,10 @@ const MobileStyle = styled.div`
     grid-template-columns: ${props => !props.isMobile && "60px 1fr"};
 `
 const MobileStyleText = styled.div`
-    margin: ${props => !props.isMobile && "auto;"};   
-    max-width: ${props => !props.isMobile && "40%;"};
-    display: ${props => !props.isMobile && "grid;"};
-    grid-template-columns: ${props => !props.isMobile && "60px 1fr;"};
+    margin: ${props => !props.isMobile && "auto"};   
+    max-width: ${props => !props.isMobile && "40%"};
+    display: ${props => !props.isMobile && "grid"};
+    grid-template-columns: ${props => !props.isMobile && "60px 1fr"};
 `
 const SocialImage = ({isMobile}) => (
     <div>

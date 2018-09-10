@@ -24,7 +24,7 @@ const IconStyle = styled.span`
     padding-right: 25px;
 `
 
-const SocialIcon = ({ incrementAsyncCOMMENTS, comments, incrementSHARES, shares, increment, count }) => (
+const SocialIcon = ({ incrementAsyncCOMMENTS, comments, incrementSHARES, shares, increment, count, id}) => (
     <IconStyleRow>
         <div></div>
         <div>
@@ -39,26 +39,21 @@ const SocialIcon = ({ incrementAsyncCOMMENTS, comments, incrementSHARES, shares,
     </IconStyleRow>
 )
 
-const mapStateToProps = ({ counter }) => ({
-    count: counter.count,
+const mapStateToProps = ({ counter }, ownprops) => ({
+    count: counter.list_of_cweets[ownprops.id].count,
     shares: counter.shares,
     comments: counter.comments,
-    isIncrementing: counter.isIncrementing,
+    isIncrementing: counter.list_of_cweets[ownprops.id].isIncrementing,
     isIncrementingSHARES: counter.isIncrementingSHARES,
-    isIncrementingCOMMENTS: counter.isIncrementingCOMMENTS,
-
+    isIncrementingCOMMENTS: counter.isIncrementingCOMMENTS
 })
 
-const mapDispatchToProps = dispatch =>
-    bindActionCreators(
-        {
-            increment,
-            incrementSHARES,
-            incrementCOMMENTS,
-            incrementAsyncCOMMENTS,
-        },
-        dispatch
-    )
+const mapDispatchToProps = (dispatch, ownprops) => ({
+    increment: () => dispatch(increment(ownprops.id)),
+    incrementSHARES: () => dispatch(incrementSHARES(ownprops.id)),
+    incrementCOMMENTS: () => dispatch(incrementCOMMENTS(ownprops.id)),
+    incrementAsyncCOMMENTS: () => dispatch(incrementAsyncCOMMENTS(ownprops.id))
+})
 
 export default connect(
     mapStateToProps,
