@@ -1,0 +1,28 @@
+{
+    "list_of_sc": [
+        {
+            "id": 0,
+            "account": "cattazzz",
+            "header": "Account one",
+            "date": "Sep 11 2018"
+        },
+        {
+            "id": 1,
+            "account": "jur10cso",
+            "header": "Account 2",
+            "date": "Sep 4 2018"
+        },
+        {
+            "id": 2,
+            "account": "jake",
+            "header": "Account three",
+            "date": "Sep 11 2018"
+        },
+        {
+            "id": 3,
+            "account": "oskar",
+            "header": "Account 4",
+            "date": "Sep 11 2018"
+        }
+    ]
+}

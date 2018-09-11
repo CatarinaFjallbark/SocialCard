@@ -46,7 +46,7 @@ const MobileSize = styled.div`
     margin: ${props => !props.isMobile && "auto"}; 
 `
 
-const SCHeader = ({isMobile, header, account, handleClick}) =>(
+const SCHeader = ({isMobile, header, account, date, handleClick}) =>(
             <MobileSize isMobile={isMobile}>
                 <HrStyle />
                 <MarginStyle isMobile={isMobile}>
@@ -54,7 +54,7 @@ const SCHeader = ({isMobile, header, account, handleClick}) =>(
                     <div>
                         <div>
                             <BoldSpan>{`${header} \u00A0`}</BoldSpan>
-                            <LightSpan>{account} Sep 4 2018</LightSpan>
+                            <LightSpan>{account} {date}</LightSpan>
                         </div>
                         <MobileTextHeader isMobile={isMobile}>
                             <div>Learning React? Start Small.</div>

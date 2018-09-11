@@ -4,63 +4,87 @@ export const INCREMENT_REQUESTEDSHARES = 'INCREMENT_REQUESTEDSHARES'
 export const INCREMENTSHARES = 'INCREMENTSHARES'
 export const INCREMENT_REQUESTEDCOMMENTS = 'INCREMENT_REQUESTEDCOMMENTS'
 export const INCREMENTCOMMENTS = 'INCREMENTCOMMENTS'
+export const OPEN_CLOSE_REQUESTED = 'OPEN_CLOSE_REQUESTED'
+export const OPEN_CLOSE = 'OPEN_CLOSE'
 
-let cwitter = {
-  list_of_cweets: [{
-    id: 0,
-    count: 0,
-    shares: 0,
-    comments: 0,
-    isIncrementing: false,
-    isIncrementingSHARES: false,
-    isIncrementingCOMMENTS: false,
-  }, {
-    id: 1,
-    count: 0,
-    shares: 0,
-    comments: 0,
-    isIncrementing: false,
-    isIncrementingSHARES: false,
-    isIncrementingCOMMENTS: false,
-  }]
-};
+function creatInitialState(numberSC) {
+  let list_of_cweets = [];
+  for (let i = 0; i < numberSC; i++) {
+    list_of_cweets.push({
+      id: i,
+      thumb: 0,
+      shares: 0,
+      comments: 0,
+      isIncrementing: false,
+      isIncrementingSHARES: false,
+      isIncrementingCOMMENTS: false,
+      willOpenOrClose: false,
+      open: true,
+    })
+  }
+  return {list_of_cweets};
+}
 
-const initialState = cwitter;
+const initialState = creatInitialState(4);
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT_REQUESTED:
       return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementing: true } : { ...cweet })
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementing: true } : { ...cweet })
       }
 
     case INCREMENT:
       return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementing: false, count: cweet.count + 1 } : { ...cweet })
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementing: false, thumb: cweet.thumb + 1 } : { ...cweet })
       }
 
     case INCREMENT_REQUESTEDSHARES:
       return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementingSHARES: true } : { ...cweet })
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementingSHARES: true } : { ...cweet })
       }
 
     case INCREMENTSHARES:
-    return {
-      list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementingSHARES: false, shares: cweet.shares + 1 } : { ...cweet })
-    }
+      return {
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementingSHARES: false, shares: cweet.shares + 1 } : { ...cweet })
+      }
 
     case INCREMENT_REQUESTEDCOMMENTS:
-    return {
-      list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementingCOMMENTS: true } : { ...cweet })
-    }
+      return {
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementingCOMMENTS: true } : { ...cweet })
+      }
 
     case INCREMENTCOMMENTS:
-    return {
-      list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementingCOMMENTS: false, comments: cweet.comments + 1 } : { ...cweet })
-     }
+      return {
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementingCOMMENTS: false, comments: cweet.comments + 1 } : { ...cweet })
+      }
+
+    case OPEN_CLOSE_REQUESTED:
+      return {
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, willOpenOrClose: true } : { ...cweet })
+      }
+
+    case OPEN_CLOSE:
+      return {
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, willOpenOrClose: false, open: !cweet.open } : { ...cweet })
+      }
 
     default:
       return state
+  }
+}
+
+export const openOrCLOSE = (id) => {
+  return dispatch => {
+    dispatch({
+      type: OPEN_CLOSE_REQUESTED,
+      id: id
+    })
+
+    dispatch({
+      type: OPEN_CLOSE,
+      id: id
+    })
   }
 }
 
