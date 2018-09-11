@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
     increment,
     incrementSHARES,
     incrementCOMMENTS,
-    incrementAsyncCOMMENTS,
 } from '../reducers/counter'
 import share from "../resourses/share.png";
 import mail from "../resourses/mail.png";
@@ -24,11 +22,11 @@ const IconStyle = styled.span`
     padding-right: 25px;
 `
 
-const SocialIcon = ({ incrementAsyncCOMMENTS, comments, incrementSHARES, shares, increment, count, id}) => (
+const SocialIcon = ({comments, incrementSHARES, shares, increment, count, incrementCOMMENTS}) => (
     <IconStyleRow>
         <div></div>
         <div>
-            <img className="imageButtonStyle" src={comment} alt="comment" onClick={incrementAsyncCOMMENTS} />
+            <img className="imageButtonStyle" src={comment} alt="comment" onClick={incrementCOMMENTS} />
             <IconStyle>{comments}</IconStyle>
             <img className="imageButtonStyle" src={share} alt="share" onClick={incrementSHARES} />
             <IconStyle>{shares}</IconStyle>
@@ -41,18 +39,17 @@ const SocialIcon = ({ incrementAsyncCOMMENTS, comments, incrementSHARES, shares,
 
 const mapStateToProps = ({ counter }, ownprops) => ({
     count: counter.list_of_cweets[ownprops.id].count,
-    shares: counter.shares,
-    comments: counter.comments,
+    shares: counter.list_of_cweets[ownprops.id].shares,
+    comments: counter.list_of_cweets[ownprops.id].comments,
     isIncrementing: counter.list_of_cweets[ownprops.id].isIncrementing,
-    isIncrementingSHARES: counter.isIncrementingSHARES,
-    isIncrementingCOMMENTS: counter.isIncrementingCOMMENTS
+    isIncrementingSHARES: counter.list_of_cweets[ownprops.id].isIncrementingSHARES,
+    isIncrementingCOMMENTS: counter.list_of_cweets[ownprops.id].isIncrementingCOMMENTS
 })
 
 const mapDispatchToProps = (dispatch, ownprops) => ({
     increment: () => dispatch(increment(ownprops.id)),
     incrementSHARES: () => dispatch(incrementSHARES(ownprops.id)),
     incrementCOMMENTS: () => dispatch(incrementCOMMENTS(ownprops.id)),
-    incrementAsyncCOMMENTS: () => dispatch(incrementAsyncCOMMENTS(ownprops.id))
 })
 
 export default connect(

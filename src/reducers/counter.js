@@ -41,28 +41,23 @@ export default (state = initialState, action) => {
 
     case INCREMENT_REQUESTEDSHARES:
       return {
-        ...state,
-        isIncrementingSHARES: true
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementingSHARES: true } : { ...cweet })
       }
 
     case INCREMENTSHARES:
-      return {
-        ...state,
-        shares: state.shares + 1,
-        isIncrementingSHARES: !state.isIncrementingSHARES
-      }
+    return {
+      list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementingSHARES: false, shares: cweet.shares + 1 } : { ...cweet })
+    }
+
     case INCREMENT_REQUESTEDCOMMENTS:
-      return {
-        ...state,
-        isIncrementingCOMMENTS: true
-      }
+    return {
+      list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementingCOMMENTS: true } : { ...cweet })
+    }
 
     case INCREMENTCOMMENTS:
-      return {
-        ...state,
-        comments: state.comments + 1,
-        isIncrementingCOMMENTS: !state.isIncrementingCOMMENTS
-      }
+    return {
+      list_of_cweets: state.list_of_cweets.map(cweet => cweet.id == action.id ? { ...cweet, isIncrementingCOMMENTS: false, comments: cweet.comments + 1 } : { ...cweet })
+     }
 
     default:
       return state
