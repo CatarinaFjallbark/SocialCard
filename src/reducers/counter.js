@@ -6,6 +6,8 @@ export const INCREMENT_REQUESTEDCOMMENTS = 'INCREMENT_REQUESTEDCOMMENTS'
 export const INCREMENTCOMMENTS = 'INCREMENTCOMMENTS'
 export const OPEN_CLOSE_REQUESTED = 'OPEN_CLOSE_REQUESTED'
 export const OPEN_CLOSE = 'OPEN_CLOSE'
+export const REMOVE_REQUESTED = 'REMOVE_REQUESTED'
+export const REMOVE = 'REMOVE'
 
 function creatInitialState(numberSC) {
   let list_of_cweets = [];
@@ -177,3 +179,17 @@ export const incrementAsyncCOMMENTS = (id) => {
     }, 500)
   }
 }
+
+export const removeACState = (id) => {
+  return dispatch => {
+      dispatch({
+          type: REMOVE_REQUESTED,
+          id: id
+      })
+
+      dispatch({
+          type: REMOVE,
+          id: id
+      })
+  }
+}  

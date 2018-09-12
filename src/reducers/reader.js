@@ -8,7 +8,6 @@ export const ADD = 'ADD'
 function creatInitialState() {
     let list_of_cweets_hard = [];
     list_of_cweets_hard = cwitter.list_of_sc;
-
     return { list_of_cweets_hard };
 }
 

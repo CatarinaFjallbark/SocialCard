@@ -3,6 +3,14 @@ import { connect } from 'react-redux'
 
 import SocialCard from './SocialCard'
 
+import {
+    removeAC,
+  } from '../reducers/reader'
+import {
+    removeACState,
+  } from '../reducers/counter'
+  
+
 class SocialFlow extends React.Component {
     render() {
         return (
@@ -15,6 +23,8 @@ class SocialFlow extends React.Component {
                         account={sc.account}
                         date={sc.date}
                         color={sc.color}
+                        postText={sc.postText}
+                        headLine={sc.headLine}
                     />
                 )}
             </div>
@@ -23,14 +33,13 @@ class SocialFlow extends React.Component {
 }
 
 const mapStateToProps = ({ reader }) => {
-    console.log(reader.list_of_cweets_hard);
     return {
         list_of_cweets_hard_props: reader.list_of_cweets_hard
     }
   }
-  
   const mapDispatchToProps = (dispatch) => ({
-
+    removeACprop: () => dispatch(removeAC()),
+    removeACStateprop: () => dispatch(removeACState()),
   })
   
 

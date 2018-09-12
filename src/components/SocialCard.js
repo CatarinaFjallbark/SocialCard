@@ -22,8 +22,14 @@ class SocialCard extends React.Component {
           date={this.props.date}
           handleClick={this.props.openOrCLOSE}
           isMobile={this.props.isMobile}
-        />
-        {this.props.open && <SocialImage isMobile={this.props.isMobile} color={this.props.color} />}
+          headLine={this.props.headLine} />
+        {this.props.open &&
+          <SocialImage
+            isMobile={this.props.isMobile}
+            color={this.props.color}
+            postText={this.props.postText}
+            headLine={this.props.headLine} />
+        }
         <SCFooter
           isMobile={this.props.isMobile}
           id={this.props.id}

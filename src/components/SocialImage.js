@@ -43,21 +43,21 @@ const MobileStyleText = styled.div`
     display: ${props => !props.isMobile && "grid"};
     grid-template-columns: ${props => !props.isMobile && "60px 1fr"};
 `
-const SocialImage = ({isMobile, color}) => (
+const SocialImage = ({isMobile, color, postText, headLine}) => (
     <div>
         <MobileStyle isMobile={isMobile} color={color}>
             <div></div>
             <GridItemTwo color={color}>
                 <ImgSquareStyle src="https://pbs.twimg.com/profile_images/1002604104194056192/IEoNsLNM_400x400.jpg" alt="profile"></ImgSquareStyle>
-                <TextStyle>Learning React? Start Small.</TextStyle>
+                <TextStyle>{headLine}</TextStyle>
             </GridItemTwo>
         </MobileStyle>
         <MobileStyleText isMobile={isMobile}>
             <div></div>
             <GridItemTwoB>
                 <div>
-                    <BoldDiv>Learning React? Start Small.</BoldDiv>
-                    <div>Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.</div>
+                    <BoldDiv>{headLine}</BoldDiv>
+                    <div>{postText}</div>
                     <AncoreStyle href="https://daveceddia.com/react-practice-projects">projects.io</AncoreStyle>
                 </div>
             </GridItemTwoB>

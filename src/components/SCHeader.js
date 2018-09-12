@@ -46,7 +46,7 @@ const MobileSize = styled.div`
     margin: ${props => !props.isMobile && "auto"}; 
 `
 
-const SCHeader = ({isMobile, header, account, date, handleClick}) =>(
+const SCHeader = ({isMobile, header, account, date, handleClick, headLine}) =>(
             <MobileSize isMobile={isMobile}>
                 <HrStyle />
                 <MarginStyle isMobile={isMobile}>
@@ -57,7 +57,7 @@ const SCHeader = ({isMobile, header, account, date, handleClick}) =>(
                             <LightSpan>{account} {date}</LightSpan>
                         </div>
                         <MobileTextHeader isMobile={isMobile}>
-                            <div>Learning React? Start Small.</div>
+                            <div>{headLine}</div>
                             <div>{`{ cred:`} <AncoreStyle href={`https://www.twitter.com/${accountTw}`}>{accountTw}</AncoreStyle>{` }`}</div>
                         </MobileTextHeader>
                     </div>
