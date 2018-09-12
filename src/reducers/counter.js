@@ -1,12 +1,7 @@
-export const INCREMENT_REQUESTED = 'INCREMENT_REQUESTED'
 export const INCREMENT = 'INCREMENT'
-export const INCREMENT_REQUESTEDSHARES = 'INCREMENT_REQUESTEDSHARES'
 export const INCREMENTSHARES = 'INCREMENTSHARES'
-export const INCREMENT_REQUESTEDCOMMENTS = 'INCREMENT_REQUESTEDCOMMENTS'
 export const INCREMENTCOMMENTS = 'INCREMENTCOMMENTS'
-export const OPEN_CLOSE_REQUESTED = 'OPEN_CLOSE_REQUESTED'
 export const OPEN_CLOSE = 'OPEN_CLOSE'
-export const REMOVE_REQUESTED = 'REMOVE_REQUESTED'
 export const REMOVE = 'REMOVE'
 
 function creatInitialState(numberSC) {
@@ -17,58 +12,40 @@ function creatInitialState(numberSC) {
       thumb: 0,
       shares: 0,
       comments: 0,
-      isIncrementing: false,
-      isIncrementingSHARES: false,
-      isIncrementingCOMMENTS: false,
-      willOpenOrClose: false,
       open: true,
+      removed: false,
     })
   }
-  return {list_of_cweets};
+  return { list_of_cweets };
 }
 
 const initialState = creatInitialState(4);
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case INCREMENT_REQUESTED:
-      return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementing: true } : { ...cweet })
-      }
-
     case INCREMENT:
       return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementing: false, thumb: cweet.thumb + 1 } : { ...cweet })
-      }
-
-    case INCREMENT_REQUESTEDSHARES:
-      return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementingSHARES: true } : { ...cweet })
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, thumb: cweet.thumb + 1 } : { ...cweet })
       }
 
     case INCREMENTSHARES:
       return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementingSHARES: false, shares: cweet.shares + 1 } : { ...cweet })
-      }
-
-    case INCREMENT_REQUESTEDCOMMENTS:
-      return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementingCOMMENTS: true } : { ...cweet })
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, shares: cweet.shares + 1 } : { ...cweet })
       }
 
     case INCREMENTCOMMENTS:
       return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementingCOMMENTS: false, comments: cweet.comments + 1 } : { ...cweet })
-      }
-
-    case OPEN_CLOSE_REQUESTED:
-      return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, willOpenOrClose: true } : { ...cweet })
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, comments: cweet.comments + 1 } : { ...cweet })
       }
 
     case OPEN_CLOSE:
       return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, willOpenOrClose: false, open: !cweet.open } : { ...cweet })
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, open: !cweet.open } : { ...cweet })
+      }
+
+    case REMOVE:
+      return {
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, removed: true} : { ...cweet })
       }
 
     default:
@@ -79,11 +56,6 @@ export default (state = initialState, action) => {
 export const openOrCLOSE = (id) => {
   return dispatch => {
     dispatch({
-      type: OPEN_CLOSE_REQUESTED,
-      id: id
-    })
-
-    dispatch({
       type: OPEN_CLOSE,
       id: id
     })
@@ -92,10 +64,6 @@ export const openOrCLOSE = (id) => {
 
 export const increment = (id) => {
   return dispatch => {
-    dispatch({
-      type: INCREMENT_REQUESTED,
-      id: id
-    })
 
     dispatch({
       type: INCREMENT,
@@ -106,10 +74,6 @@ export const increment = (id) => {
 
 export const incrementAsync = (id) => {
   return dispatch => {
-    dispatch({
-      type: INCREMENT_REQUESTED,
-      id: id
-    })
 
     return setTimeout(() => {
       dispatch({
@@ -123,11 +87,6 @@ export const incrementAsync = (id) => {
 export const incrementSHARES = (id) => {
   return dispatch => {
     dispatch({
-      type: INCREMENT_REQUESTEDSHARES,
-      id: id
-    })
-
-    dispatch({
       type: INCREMENTSHARES,
       id: id
     })
@@ -136,10 +95,6 @@ export const incrementSHARES = (id) => {
 
 export const incrementAsyncSHARES = (id) => {
   return dispatch => {
-    dispatch({
-      type: INCREMENT_REQUESTEDSHARES,
-      id: id
-    })
 
     return setTimeout(() => {
       dispatch({
@@ -153,11 +108,6 @@ export const incrementAsyncSHARES = (id) => {
 export const incrementCOMMENTS = (id) => {
   return dispatch => {
     dispatch({
-      type: INCREMENT_REQUESTEDCOMMENTS,
-      id: id
-    })
-
-    dispatch({
       type: INCREMENTCOMMENTS,
       id: id
     })
@@ -166,11 +116,6 @@ export const incrementCOMMENTS = (id) => {
 
 export const incrementAsyncCOMMENTS = (id) => {
   return dispatch => {
-    dispatch({
-      type: INCREMENT_REQUESTEDCOMMENTS,
-      id: id
-    })
-
     return setTimeout(() => {
       dispatch({
         type: INCREMENTCOMMENTS,
@@ -182,14 +127,9 @@ export const incrementAsyncCOMMENTS = (id) => {
 
 export const removeACState = (id) => {
   return dispatch => {
-      dispatch({
-          type: REMOVE_REQUESTED,
-          id: id
-      })
-
-      dispatch({
-          type: REMOVE,
-          id: id
-      })
+    dispatch({
+      type: REMOVE,
+      id: id
+    })
   }
 }  

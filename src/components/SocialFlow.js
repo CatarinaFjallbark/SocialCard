@@ -17,6 +17,7 @@ class SocialFlow extends React.Component {
             <div>
                 {this.props.list_of_cweets_hard_props.map(sc =>
                     <SocialCard
+                        key={sc.id}
                         isMobile={this.props.isMobile}
                         id={sc.id}
                         header={sc.header}
@@ -25,6 +26,8 @@ class SocialFlow extends React.Component {
                         color={sc.color}
                         postText={sc.postText}
                         headLine={sc.headLine}
+                        removeAC={this.props.removeAC}
+                        removeACState={this.props.removeACState}
                     />
                 )}
             </div>
@@ -38,8 +41,8 @@ const mapStateToProps = ({ reader }) => {
     }
   }
   const mapDispatchToProps = (dispatch) => ({
-    removeACprop: () => dispatch(removeAC()),
-    removeACStateprop: () => dispatch(removeACState()),
+    removeAC: (id) => dispatch(removeAC(id)),
+    removeACState: (id) => dispatch(removeACState(id)),
   })
   
 

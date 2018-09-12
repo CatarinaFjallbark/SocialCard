@@ -30,6 +30,7 @@ class SocialCard extends React.Component {
             postText={this.props.postText}
             headLine={this.props.headLine} />
         }
+
         <SCFooter
           isMobile={this.props.isMobile}
           id={this.props.id}
@@ -39,6 +40,8 @@ class SocialCard extends React.Component {
           increment={this.props.increment}
           thumbs={this.props.thumbs}
           incrementCOMMENTS={this.props.incrementCOMMENTS}
+          removeAC={this.props.removeAC}
+          removeACState={this.props.removeACState}
         />
       </div >
     );

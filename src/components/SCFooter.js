@@ -11,15 +11,26 @@ const MobileIcons = styled.div`
     margin: ${props => !props.isMobile && "auto"};   
     max-width: ${props => !props.isMobile && "40%"};
 `
+const Remove = styled.div`
+    color: gray;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+`
+const Wrapper = styled.div`
+    display:grid;
+    grid-template-columns: 0px 280px 1fr;
+`
 
-const SCFooter = ({ isMobile, handleUp, id, comments, incrementSHARES, shares, increment, thumbs, incrementCOMMENTS}) => (
+const SCFooter = ({ isMobile, handleUp, id, comments, incrementSHARES, shares, increment, thumbs, incrementCOMMENTS, removeAC, removeACState }) => (
     <MobileIcons isMobile={isMobile}>
-        <div>
+        <Wrapper>
             <div></div>
             <div>
-                <SocialIcon 
-                    id={id} 
-                    handleUp={handleUp} 
+                <SocialIcon
+                    id={id}
+                    handleUp={handleUp}
                     comments={comments}
                     incrementSHARES={incrementSHARES}
                     shares={shares}
@@ -28,7 +39,11 @@ const SCFooter = ({ isMobile, handleUp, id, comments, incrementSHARES, shares, i
                     incrementCOMMENTS={incrementCOMMENTS}
                 />
             </div>
-        </div>
+            <Remove onClick={() => {
+                removeAC(id);
+                removeACState(id);
+            }}>remove</Remove>
+        </Wrapper>
         <HrStyle />
     </MobileIcons>
 );

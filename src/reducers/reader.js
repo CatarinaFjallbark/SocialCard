@@ -16,14 +16,10 @@ const initialState = creatInitialState();
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case REMOVE_REQUESTED:
-            return {
-                list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementing: true } : cweet)
-            }
-
         case REMOVE:
+        console.log(action);
             return {
-                list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementing: false, thumb: cweet.thumb + 1 } : cweet)
+                list_of_cweets_hard: state.list_of_cweets_hard.filter(cweet => cweet.id !== action.id)
             }
         case ADD_REQUESTED:
             return {
@@ -42,11 +38,6 @@ export default (state = initialState, action) => {
 export const addAC = (id) => {
     return dispatch => {
         dispatch({
-            type: ADD_REQUESTED,
-            id: id
-        })
-
-        dispatch({
             type: ADD,
             id: id
         })
@@ -54,11 +45,6 @@ export const addAC = (id) => {
 }
 export const removeAC = (id) => {
     return dispatch => {
-        dispatch({
-            type: REMOVE_REQUESTED,
-            id: id
-        })
-
         dispatch({
             type: REMOVE,
             id: id
