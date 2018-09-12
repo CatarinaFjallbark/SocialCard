@@ -3,6 +3,7 @@ export const INCREMENTSHARES = 'INCREMENTSHARES'
 export const INCREMENTCOMMENTS = 'INCREMENTCOMMENTS'
 export const OPEN_CLOSE = 'OPEN_CLOSE'
 export const REMOVE = 'REMOVE'
+export const ADD = 'ADD'
 
 function creatInitialState(numberSC) {
   let list_of_cweets = [];
@@ -45,7 +46,19 @@ export default (state = initialState, action) => {
 
     case REMOVE:
       return {
-        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, removed: true} : { ...cweet })
+        list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, removed: true } : { ...cweet })
+      }
+
+    case ADD:
+      return {
+        list_of_cweets: state.list_of_cweets.concat({
+          id: state.list_of_cweets.length,
+          thumb: 0,
+          shares: 0,
+          comments: 0,
+          open: true,
+          removed: false,
+        })
       }
 
     default:
@@ -130,6 +143,13 @@ export const removeACState = (id) => {
     dispatch({
       type: REMOVE,
       id: id
+    })
+  }
+}
+export const addACState = () => {
+  return dispatch => {
+    dispatch({
+      type: ADD,
     })
   }
 }  

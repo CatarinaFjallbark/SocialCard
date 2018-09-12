@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import styled from 'styled-components';
 
 import SocialCard from './SocialCard'
 
@@ -9,12 +10,15 @@ import {
 import {
     removeACState,
   } from '../reducers/counter'
-  
 
+  const Wrapper = styled.div`
+    background: #f5f8fa;
+`
+  
 class SocialFlow extends React.Component {
     render() {
         return (
-            <div>
+            <Wrapper>
                 {this.props.list_of_cweets_hard_props.map(sc =>
                     <SocialCard
                         key={sc.id}
@@ -30,7 +34,7 @@ class SocialFlow extends React.Component {
                         removeACState={this.props.removeACState}
                     />
                 )}
-            </div>
+            </Wrapper>
         );
     }
 }

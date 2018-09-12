@@ -5,7 +5,7 @@
             "account": "cattazzz",
             "header": "Account 1",
             "date": "Sep 11 2018",
-            "color": "lightgreen",
+            "color": "#008272",
             "postText": "Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.",
             "headLine": "Learning React? Start Small."
         },
@@ -14,7 +14,7 @@
             "account": "jur10cso",
             "header": "Account 2",
             "date": "Sep 4 2018",
-            "color": "lightblue",
+            "color": "#e81123",
             "postText": "Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.",
             "headLine": "Learning Redux? Start Small."
         },
@@ -23,7 +23,7 @@
             "account": "jake",
             "header": "Account 3",
             "date": "Sep 11 2018",
-            "color": "pink",
+            "color": "#b4009e",
             "postText": "Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.",
             "headLine": "Learning javascript? Start Small."
         },
@@ -32,7 +32,7 @@
             "account": "oskar",
             "header": "Account 4",
             "date": "Sep 11 2018",
-            "color": "lightyellow",
+            "color": "#ffb900",
             "postText": "Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.",
             "headLine": "Learning Java? Start Small."
         }

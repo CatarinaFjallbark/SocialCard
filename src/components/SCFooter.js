@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import SocialIcon from './SocialIcon'
-import './style.css';
 
 const HrStyle = styled.hr`
     font-weight: lighter;
@@ -21,6 +20,7 @@ const Remove = styled.div`
 const Wrapper = styled.div`
     display:grid;
     grid-template-columns: 0px 280px 1fr;
+    background-color: white;
 `
 
 const SCFooter = ({ isMobile, handleUp, id, comments, incrementSHARES, shares, increment, thumbs, incrementCOMMENTS, removeAC, removeACState }) => (

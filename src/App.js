@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SocialFlow from './components/SocialFlow'
 import MainHeader from './components/MainHeader';
+import Seperator from './components/Seperator';
+
+
 class App extends Component {
 
   constructor(props) {
@@ -23,6 +26,7 @@ class App extends Component {
     return (
       <div>
         <MainHeader />
+        <Seperator />
         <SocialFlow
           isMobile={this.state.isMobile}
         />

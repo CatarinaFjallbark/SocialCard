@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const GridItemTwo = styled.div`
     background: ${props => props.color};
-    color: gray;
+    color: white;
     display:grid;
     grid-template-columns: 60px 1fr;
     padding: 5px;
@@ -36,12 +36,15 @@ const MobileStyle = styled.div`
     height: ${props => !props.isMobile && "250px"};
     display: ${props => !props.isMobile && "grid"};
     grid-template-columns: ${props => !props.isMobile && "60px 1fr"};
+    background-color: white;
+
 `
 const MobileStyleText = styled.div`
     margin: ${props => !props.isMobile && "auto"};   
     max-width: ${props => !props.isMobile && "40%"};
     display: ${props => !props.isMobile && "grid"};
     grid-template-columns: ${props => !props.isMobile && "60px 1fr"};
+    background-color: white;
 `
 const SocialImage = ({isMobile, color, postText, headLine}) => (
     <div>

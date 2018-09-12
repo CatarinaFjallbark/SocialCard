@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import arrow from '../resourses/arrow.png';
-import './style.css';
 
 let accountTw = "ThePracticalDev";
 
@@ -44,6 +43,7 @@ const MobileTextHeader = styled.div`
 const MobileSize = styled.div`
     max-width: ${props => !props.isMobile && "40%"}; 
     margin: ${props => !props.isMobile && "auto"}; 
+    background-color: white;
 `
 
 const SCHeader = ({isMobile, header, account, date, handleClick, headLine}) =>(

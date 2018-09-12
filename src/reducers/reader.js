@@ -1,8 +1,6 @@
 import cwitter from "../resourses/cwitter.json"
 
-export const REMOVE_REQUESTED = 'REMOVE_REQUESTED'
 export const REMOVE = 'REMOVE'
-export const ADD_REQUESTED = 'ADD_REQUESTED'
 export const ADD = 'ADD'
 
 function creatInitialState() {
@@ -17,32 +15,35 @@ const initialState = creatInitialState();
 export default (state = initialState, action) => {
     switch (action.type) {
         case REMOVE:
-        console.log(action);
             return {
                 list_of_cweets_hard: state.list_of_cweets_hard.filter(cweet => cweet.id !== action.id)
             }
-        case ADD_REQUESTED:
-            return {
-                list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementing: true } : cweet)
-            }
-
         case ADD:
             return {
-                list_of_cweets: state.list_of_cweets.map(cweet => cweet.id === action.id ? { ...cweet, isIncrementing: false, thumb: cweet.thumb + 1 } : cweet)
+                list_of_cweets_hard: state.list_of_cweets_hard.concat({
+                    id: state.list_of_cweets_hard.length,
+                    account: "addaccount",
+                    header: "ADDAccount ",
+                    date: "Sep 12 2018",
+                    color: "#d83b01",
+                    postText: "Can't pry yourself away from the tutorials? The cure is to make tiny little experiment apps.",
+                    headLine: "Learning React? Start Small."
+                }
+                )
             }
         default:
             return state
     }
 }
 
-export const addAC = (id) => {
+export const addAC = () => {
     return dispatch => {
         dispatch({
             type: ADD,
-            id: id
         })
     }
 }
+
 export const removeAC = (id) => {
     return dispatch => {
         dispatch({
