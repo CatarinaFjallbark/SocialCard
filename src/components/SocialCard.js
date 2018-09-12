@@ -23,7 +23,7 @@ class SocialCard extends React.Component {
           handleClick={this.props.openOrCLOSE}
           isMobile={this.props.isMobile}
         />
-        {this.props.open && <SocialImage isMobile={this.props.isMobile} />}
+        {this.props.open && <SocialImage isMobile={this.props.isMobile} color={this.props.color} />}
         <SCFooter
           isMobile={this.props.isMobile}
           id={this.props.id}

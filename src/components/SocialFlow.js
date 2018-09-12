@@ -15,6 +15,7 @@ class SocialFlow extends React.Component {
                         header={sc.header}
                         account={sc.account}
                         date={sc.date}
+                        color={sc.color}
                     />
                 )}
             </div>

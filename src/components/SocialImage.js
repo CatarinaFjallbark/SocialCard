@@ -2,8 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 
 const GridItemTwo = styled.div`
-    background: pink;
-    color: white;
+    background: ${props => props.color};
+    color: gray;
     display:grid;
     grid-template-columns: 60px 1fr;
     padding: 5px;
@@ -30,11 +30,11 @@ const AncoreStyle = styled.a`
     color: gray;
 `
 const MobileStyle = styled.div`
-    background: ${props => props.isMobile && "pink"};
+    background: ${props => props.isMobile && props.color};
     margin: ${props => !props.isMobile && "auto"};   
     max-width: ${props => !props.isMobile && "40%"};
     height: ${props => !props.isMobile && "250px"};
-    display: ${props => !props.isMobile && "grid"};;
+    display: ${props => !props.isMobile && "grid"};
     grid-template-columns: ${props => !props.isMobile && "60px 1fr"};
 `
 const MobileStyleText = styled.div`
@@ -43,11 +43,11 @@ const MobileStyleText = styled.div`
     display: ${props => !props.isMobile && "grid"};
     grid-template-columns: ${props => !props.isMobile && "60px 1fr"};
 `
-const SocialImage = ({isMobile}) => (
+const SocialImage = ({isMobile, color}) => (
     <div>
-        <MobileStyle isMobile={isMobile}>
+        <MobileStyle isMobile={isMobile} color={color}>
             <div></div>
-            <GridItemTwo>
+            <GridItemTwo color={color}>
                 <ImgSquareStyle src="https://pbs.twimg.com/profile_images/1002604104194056192/IEoNsLNM_400x400.jpg" alt="profile"></ImgSquareStyle>
                 <TextStyle>Learning React? Start Small.</TextStyle>
             </GridItemTwo>
