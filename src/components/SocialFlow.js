@@ -1,14 +1,13 @@
 import React from 'react';
-import SocialCard from './SocialCard'
-import cwitter from "../resourses/cwitter.json"
+import { connect } from 'react-redux'
 
-let list_of_sc = cwitter.list_of_sc;
+import SocialCard from './SocialCard'
 
 class SocialFlow extends React.Component {
     render() {
         return (
             <div>
-                {list_of_sc.map(sc =>
+                {this.props.list_of_cweets_hard_props.map(sc =>
                     <SocialCard
                         isMobile={this.props.isMobile}
                         id={sc.id}
@@ -23,4 +22,19 @@ class SocialFlow extends React.Component {
     }
 }
 
-export default SocialFlow;
+const mapStateToProps = ({ reader }) => {
+    console.log(reader.list_of_cweets_hard);
+    return {
+        list_of_cweets_hard_props: reader.list_of_cweets_hard
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => ({
+
+  })
+  
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SocialFlow);

@@ -3,7 +3,7 @@
         {
             "id": 0,
             "account": "cattazzz",
-            "header": "Account one",
+            "header": "Account 1",
             "date": "Sep 11 2018",
             "color": "lightgreen"
         },
@@ -17,7 +17,7 @@
         {
             "id": 2,
             "account": "jake",
-            "header": "Account three",
+            "header": "Account 3",
             "date": "Sep 11 2018",
             "color": "pink"
         },
