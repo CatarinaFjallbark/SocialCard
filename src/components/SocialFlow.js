@@ -45,8 +45,8 @@ const mapStateToProps = ({ reader }) => {
     }
   }
   const mapDispatchToProps = (dispatch) => ({
-    removeAC: (id) => dispatch(removeAC(id)),
-    removeACState: (id) => dispatch(removeACState(id)),
+    removeAC: (id) => removeAC(id)(dispatch),
+    removeACState: (id) => removeACState(id)(dispatch),
   })
   
 
